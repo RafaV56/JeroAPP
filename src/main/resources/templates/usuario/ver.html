@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title th:text="${title}"></title>
+<body class="w3-padding-small">
+	<h2 class="w3-red w3-border w3-round-xlarge w3-border-black w3-center">Usuario
+		Jugador index</h2>
+	<div class="w3-panel w3-leftbar w3-pale-green w3-border-green">
+		<h1>
+			Bienvenido <span th:text="${name}"></span> <span
+				class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge"
+				th:text="${fecha.diaDelMes}+' / '+${fecha.mes}+' / '+${fecha.anno}"></span>
+		</h1>
+		<div class="w3-padding-small">
+			Nombre: 
+			<span class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge" th:text="${jugador}"></span>
+			Talla:  
+			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.talla}"></span>
+			Fecha de nacimiento: 
+			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.edad.anno}"></span>
+
+		</div>
+	</div>
+
+</body>
+</html>

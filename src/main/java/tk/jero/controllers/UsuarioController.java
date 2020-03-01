@@ -8,23 +8,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import tk.jero.models.Jugador;
-import tk.jero.resources.Fecha;
+import tk.jero.models.*;
+import tk.jero.resources.*;
 
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
 
+	
+	/**
+	 * Usuario de la aplicacíon
+	 */
+	@Autowired
+	private Usuario usuario;
 	// Valor de la variable que se encuentra en el application.properties
 	@Value("${app.title}")
 	private String titulo;
 
 	@GetMapping("/ver")
 	public String indexUsuario(Model model) {
-		jugador.setNombre("Jero");
-		jugador.setEdad(new Fecha(04, 10, 2004));
-		jugador.setTalla(1.60);
-		model.addAttribute("jugador",jugador);
+		usuario.setNombre("Jero");
+		usuario.setEdad(new Fecha(04, 10, 2004));
+		usuario.setTalla(1.60);
+		usuario.pruebasFuncionales.setAbdominal(new Abdominal(true, 56, new Fecha(10, 10, 2019, 20, 15)));
+		model.addAttribute("jugador",usuario);
 		return "usuario/ver";
 	}
 	
@@ -37,8 +44,6 @@ public class UsuarioController {
 		return titulo;
 	}
 	
-	@Autowired
-	private Jugador jugador;
 	
 	/**
 	 * Este método es un atributo que siempre llevará el Modelo, algo común para todos como la fecha

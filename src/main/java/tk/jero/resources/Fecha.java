@@ -6,17 +6,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.format.TextStyle;
 import java.util.Locale;
+
+import org.springframework.stereotype.Component;
 
 /**
  * Clase desarrollada por ejemplosdecodigo.ddns.net el 13/1/2020, para manejar fechas en Espa�ol
  * @author Ejemplos de c�digo (Rafael Antonio Vel�squez Millán)
  *
  */
+@Component
 public class Fecha implements Comparable<Fecha>{
 	
 	/**
@@ -89,6 +91,9 @@ public class Fecha implements Comparable<Fecha>{
 			throw new RuntimeException(error);
 		}
 		return fechasNueva;
+	}
+
+	public Fecha() {
 	}
 
 	/**
@@ -319,16 +324,63 @@ public class Fecha implements Comparable<Fecha>{
 	
 	
 	/**
-	 * Calcula los a�os, meses y d�as han pasado hasta la fecha que se pasa por parametro
-	 * @param nueva Fecha que se quiere compara
-	 * @return
+	 * Calcula los años, de mi  está fecha hasta la actual. si está fecha es superior dará un número negativo. no tiene  en cuenta las horas ni lo  minutos
+	 * @return los años que  han pasado
 	 */
-	public Period calcularAnno(Fecha nueva){
-		LocalDate restar=LocalDate.of(nueva.getAnno(), getMesEnNumero(), nueva.getDiaDelMes());
-		LocalDate mia=LocalDate.of(fecha.getYear(), fecha.getMonthValue(), fecha.getDayOfMonth());
+	public long calcularAnnos(){
+		long miAnno=fecha.getYear();
+		long miMes=fecha.getMonthValue();
+		long miDia=fecha.getDayOfMonth();
 		
-		Period periodo=Period.between(mia, restar);
-		return periodo;
+		long hoyAnno=LocalDate.now().getYear();
+		long hoyMes=LocalDate.now().getMonthValue();
+		long hoyDia=LocalDate.now().getDayOfMonth();
+		
+		long contador=0;
+		//si mi día es igual que el de hoy, mirar meses y años
+		if (miDia==hoyDia) {
+			//si mi mes también es el mismo ahora solo se pasa a restar años
+			if (miMes==hoyMes) {
+				contador=hoyAnno-miAnno;
+			 //pero si mi mes es superior se resta una año a contador
+			}else if(miMes>hoyMes){
+				contador=hoyAnno-miAnno;
+				contador--;
+				//si mi mes es inferior solo queda restar las fechas
+			}else {
+				contador=hoyAnno-miAnno;
+			}
+			//en cambio si mi día es superior, se le resta un año a contador
+		}else if (miDia>hoyDia) {
+			//si mi mes es el mismo,solo se pasa a restar años y un año menos a contador
+			if(miMes==hoyMes){
+				contador=hoyAnno-miAnno;
+				contador--;
+				//si mi mes es inferior solo queda restar las fechas
+			}else if(miMes>hoyMes){
+				contador=hoyAnno-miAnno;
+				contador--;
+				//si el día es superior pero el mes es inferior a hoy, solo se resta los años
+			}else {
+				contador=hoyAnno-miAnno;
+			}
+			//si mi día es inferior pasamos a ver los meses
+		}else {
+			//si mi mes también es el mismo ahora solo se pasa a restar años
+			if (miMes==hoyMes) {
+				contador=hoyAnno-miAnno;
+			 //pero si mi mes es superior se resta una año a contador
+			}else if(miMes>hoyMes){
+				contador=hoyAnno-miAnno;
+				contador--;
+				//si mi mes es inferior solo queda restar las fechas
+			}else {
+				contador=hoyAnno-miAnno;
+			}
+			
+		}
+
+		return contador;
 	}
 
 	/**

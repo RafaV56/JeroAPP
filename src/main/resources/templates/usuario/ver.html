@@ -15,12 +15,14 @@
 				th:text="${fecha.diaDelMes}+' / '+${fecha.mes}+' / '+${fecha.anno}"></span>
 		</h1>
 		<div class="w3-padding-small">
-			Nombre: 
-			<span class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge" th:text="${jugador}"></span>
+			<p>Nombre: 
+			<span class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge" th:text="${jugador}"></span></p>
 			Talla:  
 			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.talla}"></span>
 			Fecha de nacimiento: 
 			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.edad.anno}"></span>
+			Años: 
+			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.edad.calcularAnnos()}"></span>
 
 		</div>
 	</div>

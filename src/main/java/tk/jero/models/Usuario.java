@@ -1,5 +1,6 @@
 package tk.jero.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import tk.jero.resources.Fecha;
@@ -10,22 +11,23 @@ import tk.jero.resources.Fecha;
  *
  */
 @Component
-public class Jugador {
+public class Usuario {
 	
 	private String nombre;
 	private Fecha fechaNacimiento;
 	private double talla;
-	public CualidadesFisicas cualidadesFisicas;
+	public PruebasFuncionales pruebasFuncionales;
 	
-	public Jugador() {
+	public Usuario() {
+		pruebasFuncionales=new PruebasFuncionales();
+		fechaNacimiento= new Fecha(4, 10, 2004);
 	}
 	
-	public Jugador(String nombre, Fecha edad) {
+	public Usuario(String nombre, Fecha edad) {
 		super();
 		this.nombre = nombre;
 		this.fechaNacimiento = edad;
 		talla=1.50;
-		cualidadesFisicas=new CualidadesFisicas();
 	}
 	public String getNombre() {
 		return nombre;
@@ -41,8 +43,8 @@ public class Jugador {
 	}
 
 	public String toString() {
-		return "Jugador [nombre=" + nombre + ", edad=" + fechaNacimiento + ", talla="
-				+ talla + ", cualidadesFisicas=" + cualidadesFisicas + "]";
+		return "Usuario [nombre : " + nombre + ", Fecha de Nacimiento : " + fechaNacimiento + ", talla : "
+				+ talla +"mts.  Años : "+fechaNacimiento.calcularAnnos()+ ", Pruebas Funcionales : " + pruebasFuncionales + "]";
 	}
 	public double getTalla() {
 		return talla;
@@ -52,9 +54,7 @@ public class Jugador {
 			throw new RuntimeException("La estatura no es correcta, [0mts - 2.50mts]");			
 		}
 		this.talla = talla;
-	}
-
-	
+	}	
 	
 
 }

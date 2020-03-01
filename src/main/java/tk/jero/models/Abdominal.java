@@ -1,6 +1,8 @@
 package tk.jero.models;
 
-import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import tk.jero.resources.Fecha;
 
@@ -20,6 +22,7 @@ public class Abdominal {
 			+ "13-24 malo(2 puntos) 1-12 muy malo(1 punto)\n"
 			+ "Mujeres 41-50 excelente(5 puntos) 31-40 bueno(4 puntos) 21-31 promedio(3 puntos)"
 			+ " 11-20 malo(2 putnos) 1-10 muy malo(1 punto)";
+	
 	/**
 	 * Si el jugador masculino su valor  debe ser true, si es femenino ser� false
 	 */
@@ -35,10 +38,6 @@ public class Abdominal {
 	 * Crea una prueba vacia, solo con la fecha de la instancia
 	 */
 	public Abdominal() {
-		super();
-		
-		fecha=new Fecha(LocalDateTime.now().getDayOfMonth(), LocalDateTime.now().getMonthValue(), LocalDateTime.now().getYear(),
-				LocalDateTime.now().getHour(), LocalDateTime.now().getMinute());
 	}
 
 	/**

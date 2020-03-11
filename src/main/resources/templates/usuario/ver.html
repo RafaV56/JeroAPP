@@ -14,17 +14,36 @@
 				class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge"
 				th:text="${fecha.diaDelMes}+' / '+${fecha.mes}+' / '+${fecha.anno}"></span>
 		</h1>
-		<div class="w3-padding-small">
+		<!-- Vemos si el jugador existe -->
+		<div class="w3-padding-small" th:if="${jugador!=null}">
 			<p>Nombre: 
-			<span class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge" th:text="${jugador}"></span></p>
+			<span class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge" th:text="${jugador}"></span>
+			</p>
+			<p>
 			Talla:  
-			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.talla}"></span>
-			Fecha de nacimiento: 
-			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.edad.anno}"></span>
+			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.talla+'mts'}"></span>
+			</p>
+			<p>
+			Peso:  
+			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.peso+'kg'}"></span>
+			</p>
+			<p>
 			Años: 
-			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.edad.calcularAnnos()}"></span>
-
+			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.fechaNacimiento.calcularAnnos()}"></span>
+			</p>
+			<p>
+			Lumbar: 
+			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.pruebasFuncionales.lumbar}"></span>
+			</p>
+			<p>
+			Abdominal: 
+			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.pruebasFuncionales.abdominal}"></span>
+			</p>
 		</div>
+			<div class="w3-padding-small" th:if="${jugador==null}">
+		<span class="w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge">no hay usuario</span></div>
+	</div>
+	<p><a th:href="@{/}" class="w3-padding-small w3-teal w3-border w3-border w3-round-xlarge">Ir a Inicio</a> </p>
 	</div>
 
 </body>

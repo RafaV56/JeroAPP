@@ -28,9 +28,9 @@ public class UsuarioController {
 	@GetMapping("/ver")
 	public String indexUsuario(Model model) {
 		usuario.setNombre("Jero");
-		usuario.setEdad(new Fecha(04, 10, 2004));
+		usuario.setFechaNacimiento(new Fecha(04, 10, 2004));
 		usuario.setTalla(1.60);
-		usuario.pruebasFuncionales.setAbdominal(new Abdominal(true, 56, new Fecha(10, 10, 2019, 20, 15)));
+		usuario.setPeso(60);
 		model.addAttribute("jugador",usuario);
 		return "usuario/ver";
 	}

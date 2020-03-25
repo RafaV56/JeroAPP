@@ -15,7 +15,7 @@
 	<description>APP web para el desarrollo de un deportista</description>
 
 	<properties>
-		<java.version>13</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<dependencies>

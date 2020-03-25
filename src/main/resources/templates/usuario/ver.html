@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title th:text="${title}"></title>
-<body class="w3-padding-small">
+<body class="w3-padding-small w3-black">
 	<h2 class="w3-red w3-border w3-round-xlarge w3-border-black w3-center">Usuario
 		Jugador index</h2>
 	<div class="w3-panel w3-leftbar w3-pale-green w3-border-green">
@@ -16,34 +16,54 @@
 		</h1>
 		<!-- Vemos si el jugador existe -->
 		<div class="w3-padding-small" th:if="${jugador!=null}">
-			<p>Nombre: 
-			<span class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge" th:text="${jugador}"></span>
+			<p>
+				Nombre: <span
+					class="w3-small w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge"
+					th:text="${jugador}"></span>
 			</p>
 			<p>
-			Talla:  
-			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.talla+'mts'}"></span>
+				Talla: <span
+					class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge"
+					th:text="${jugador.talla+'mts'}"></span>
 			</p>
 			<p>
-			Peso:  
-			<span class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge" th:text="${jugador.peso+'kg'}"></span>
+				Peso: <span
+					class="w3-small w3-padding-small w3-teal w3-border w3-border w3-round-xlarge"
+					th:text="${jugador.peso+'kg'}"></span>
 			</p>
 			<p>
-			Años: 
-			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.fechaNacimiento.calcularAnnos()}"></span>
+				Años: <span
+					class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge"
+					th:text="${jugador.fechaNacimiento.calcularAnnos()}"></span>
 			</p>
-			<p>
-			Lumbar: 
-			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.pruebasFuncionales.lumbar}"></span>
-			</p>
-			<p>
-			Abdominal: 
-			<span class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge" th:text="${jugador.pruebasFuncionales.abdominal}"></span>
-			</p>
+
+			<h3 class="w3-panel w3-teal w3-center">Pruebas
+				funcionales</h3>
+			<div th:each="prueba : ${jugador.pruebasFuncionales}">
+				<p>
+					Lumbar: <span
+						class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge"
+						th:text="${prueba.lumbar}"></span>
+				</p>
+				<p>
+					Abdominal: <span
+						class="w3-small w3-padding-small w3-green w3-border w3-border w3-round-xlarge"
+						th:text="${prueba.abdominal}"></span>
+				</p>
+
+			</div>
 		</div>
-			<div class="w3-padding-small" th:if="${jugador==null}">
-		<span class="w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge">no hay usuario</span></div>
+		<div class="w3-padding-small" th:if="${jugador==null}">
+			<span
+				class="w3-padding-small w3-yellow w3-border w3-border w3-round-xlarge">no
+				hay usuario</span>
+		</div>
 	</div>
-	<p><a th:href="@{/}" class="w3-padding-small w3-teal w3-border w3-border w3-round-xlarge">Ir a Inicio</a> </p>
+	<p>
+		<a th:href="@{/}"
+			class="w3-padding-small w3-teal w3-border w3-border w3-round-xlarge">Ir
+			a Inicio</a>
+	</p>
 	</div>
 
 </body>

@@ -1,6 +1,9 @@
 package tk.jero.models;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import tk.jero.resources.Fecha;
@@ -16,8 +19,10 @@ public class Usuario {
 
 	private Fecha fechaNacimiento;
 	private String nombre;
+
 	@Autowired
-	public PruebasFuncionales pruebasFuncionales;
+	@Qualifier("funcionales")
+	public List<PruebasFuncionales> pruebasFuncionales;
 
 	private double talla, peso;
 
@@ -41,6 +46,10 @@ public class Usuario {
 
 	public double getPeso() {
 		return peso;
+	}
+
+	public List<PruebasFuncionales> getPruebasFuncionales() {
+		return pruebasFuncionales;
 	}
 
 	public double getTalla() {
@@ -68,6 +77,10 @@ public class Usuario {
 			throw new RuntimeException("El peso del usuario es 0 o inferior, o supera los 350 kg.");
 		}
 		this.peso = peso;
+	}
+
+	public void setPruebasFuncionales(List<PruebasFuncionales> pruebasFuncionales) {
+		this.pruebasFuncionales = pruebasFuncionales;
 	}
 
 	public void setTalla(double talla) {

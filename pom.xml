@@ -8,10 +8,10 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>tk.jero</groupId>
-	<artifactId>Jero</artifactId>
+	<groupId>tk.jeroapp.heroku</groupId>
+	<artifactId>Jeroapp-heroku</artifactId>
 	<version>1</version>
-	<name>tk.jero</name>
+	<name>tk.jeroapp.heroku</name>
 	<description>APP web para el desarrollo de un deportista</description>
 
 	<properties>
